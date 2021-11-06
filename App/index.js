@@ -1,5 +1,12 @@
 import React from "react";
-import { StatusBar, StyleSheet, Text, View } from "react-native";
+import {
+  ScrollView,
+  SectionList,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import ChatList from "./components/ChatList";
 
@@ -9,9 +16,12 @@ export default function App() {
       <StatusBar barStyle="dark-content" backgroundColor="#fff" />
       <Text style={styles.title}>React-Native-Social-Cards 🥇💟</Text>
       <Text style={styles.byMe}>by @bismarkamanor</Text>
-      <View style={styles.container}>
-        <ChatList />
-      </View>
+      <ScrollView>
+        <Text style={styles.sectionTitle}>#ChatList</Text>
+        <View style={styles.container}>
+          <ChatList />
+        </View>
+      </ScrollView>
     </SafeAreaProvider>
   );
 }
@@ -37,5 +47,13 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     marginHorizontal: 20,
     marginTop: 5,
+  },
+  sectionTitle: {
+    marginVertical: 20,
+    marginHorizontal: 20,
+    marginBottom: 0,
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#0000ff",
   },
 });

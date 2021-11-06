@@ -1,31 +1,39 @@
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 
-const ChatItem = (props) => {
+const ChatItem = ({
+  imageUrl,
+  userInitials,
+  name,
+  userLive,
+  messageTime,
+  messageBrief,
+  newMessageCount,
+}) => {
   return (
     <View style={styles.itemCardContainer}>
-      {props.url == null ? (
+      {imageUrl == null ? (
         <View style={styles.imageContainer}>
-          <Text style={styles.userInitials}>{props.userInitials}</Text>
+          <Text style={styles.userInitials}>{userInitials}</Text>
         </View>
       ) : (
-        <Image style={styles.image} source={props.url} resizeMode="cover" />
+        <Image style={styles.image} source={imageUrl} resizeMode="cover" />
       )}
 
       <View style={styles.rightContent}>
         <View style={[styles.section, styles.sectionSeperator]}>
           <View style={{ flexDirection: "row", alignItems: "center" }}>
-            <Text style={styles.personName}>{props.name}</Text>
-            {props.userLive ? <View style={styles.live}></View> : null}
+            <Text style={styles.personName}>{name}</Text>
+            {userLive ? <View style={styles.live}></View> : null}
           </View>
-          {props.messageTime == null ? null : (
-            <Text style={styles.msgTime}>{props.messageTime}</Text>
+          {messageTime == null ? null : (
+            <Text style={styles.msgTime}>{messageTime}</Text>
           )}
         </View>
         <View style={styles.section}>
-          <Text style={styles.messageBrief}>{props.messageBrief}</Text>
-          {props.newMessageCount == null ? null : (
-            <Text style={styles.newMsgCount}>{props.newMessageCount}</Text>
+          <Text style={styles.messageBrief}>{messageBrief}</Text>
+          {newMessageCount == null ? null : (
+            <Text style={styles.newMsgCount}>{newMessageCount}</Text>
           )}
         </View>
       </View>
