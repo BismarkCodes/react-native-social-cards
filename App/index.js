@@ -8,7 +8,7 @@ import {
   View,
 } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import ChatList from "./components/ChatList";
+import ChatList from "./components/Chatlist/ChatList";
 
 export default function App() {
   return (

@@ -2,7 +2,6 @@ import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ChatItem from "./ChatItem";
-import ChatItem2 from "./ChatItem2";
 
 const ChatList = (props) => {
   return (
