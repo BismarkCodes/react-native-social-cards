@@ -2,12 +2,13 @@ import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ChatItem from "./ChatItem";
+import ChatItem2 from "./ChatItem2";
 
 const ChatList = (props) => {
   return (
     <SafeAreaView>
+      <Text style={styles.label}>1. Simple ChatList</Text>
       <View style={styles.container}>
-        <Text style={styles.label}>1. ChatList</Text>
         <ChatItem
           url={require("../assets/images/profile1.jpg")}
           name="Bismark Amanor"
@@ -19,9 +20,35 @@ const ChatList = (props) => {
           messageBrief="Hello 💓👋"
         />
         <ChatItem
-          url={require("../assets/images/profile3.jpg")}
+          userInitials="JA"
           name="Jacob Asafotei 💓"
-          messageBrief="When are you showing up for the..."
+          userLive={true}
+          messageBrief="typing..."
+        />
+      </View>
+      <Text style={[styles.label, styles.cardSeperator]}>
+        2. Detailed ChatList
+      </Text>
+      <View style={styles.container}>
+        <ChatItem
+          url={require("../assets/images/profile2.jpg")}
+          name="Bismark Amanor"
+          userLive={true}
+          messageBrief="Last night was a blust"
+          messageTime="13 mins"
+          newMessageCount={3}
+        />
+        <ChatItem
+          userInitials="OB"
+          name="Osmborn Blake"
+          messageBrief="Hello 💓👋"
+        />
+        <ChatItem
+          url={require("../assets/images/profile3.jpg")}
+          name="MIA"
+          userLive={true}
+          messageBrief="typing..."
+          messageTime="2 hrs"
         />
       </View>
     </SafeAreaView>
@@ -44,8 +71,11 @@ const styles = StyleSheet.create({
     elevation: 10,
   },
   label: {
-    color: "grey",
+    color: "#333",
     fontSize: 15,
     marginVertical: 8,
+  },
+  cardSeperator: {
+    marginTop: 25,
   },
 });

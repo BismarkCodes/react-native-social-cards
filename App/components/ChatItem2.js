@@ -1,7 +1,7 @@
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 
-const ChatItem = (props) => {
+const ChatItem2 = (props) => {
   return (
     <View style={styles.itemCardContainer}>
       {props.url == null ? (
@@ -14,10 +14,7 @@ const ChatItem = (props) => {
 
       <View style={styles.rightContent}>
         <View style={[styles.section, styles.sectionSeperator]}>
-          <View style={{ flexDirection: "row", alignItems: "center" }}>
-            <Text style={styles.personName}>{props.name}</Text>
-            {props.userLive ? <View style={styles.live}></View> : null}
-          </View>
+          <Text style={styles.personName}>{props.name}</Text>
           {props.messageTime == null ? null : (
             <Text style={styles.msgTime}>{props.messageTime}</Text>
           )}
@@ -33,7 +30,7 @@ const ChatItem = (props) => {
   );
 };
 
-export default ChatItem;
+export default ChatItem2;
 
 const styles = StyleSheet.create({
   itemCardContainer: {
@@ -81,13 +78,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: "#333",
     fontWeight: "bold",
-  },
-  live: {
-    height: 8,
-    width: 8,
-    borderRadius: (10 / 2) * 100,
-    backgroundColor: "#8EE98E",
-    marginLeft: 10,
   },
   msgTime: {
     fontWeight: "normal",
