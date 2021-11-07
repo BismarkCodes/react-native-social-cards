@@ -9,12 +9,12 @@ const ChatList = (props) => {
       <Text style={styles.label}>1. Simple ChatList</Text>
       <View style={styles.container}>
         <ChatItem
-          imageUrl={require("../assets/images/profile1.jpg")}
+          imageUrl={require("../../assets/images/profile1.jpg")}
           name="Bismark Amanor"
           messageBrief="Last night was a blust"
         />
         <ChatItem
-          imageUrl={require("../assets/images/profile2.jpg")}
+          imageUrl={require("../../assets/images/profile2.jpg")}
           name="Quest"
           messageBrief="Hello 💓👋"
         />
@@ -30,7 +30,7 @@ const ChatList = (props) => {
       </Text>
       <View style={styles.container}>
         <ChatItem
-          imageUrl={require("../assets/images/profile2.jpg")}
+          imageUrl={require("../../assets/images/profile2.jpg")}
           name="Bismark Amanor"
           userLive={true}
           messageBrief="Last night was a blust"
@@ -43,7 +43,7 @@ const ChatList = (props) => {
           messageBrief="Hello 💓👋"
         />
         <ChatItem
-          imageUrl={require("../assets/images/profile3.jpg")}
+          imageUrl={require("../../assets/images/profile3.jpg")}
           name="MIA"
           userLive={true}
           messageBrief="typing..."
