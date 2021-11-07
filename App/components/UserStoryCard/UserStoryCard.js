@@ -7,6 +7,7 @@ import {
   Text,
   View,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const Item = ({ imageUrl, userName }) => {
   return (
@@ -21,7 +22,7 @@ const Item = ({ imageUrl, userName }) => {
   );
 };
 
-const statusData = [
+const storyData = [
   {
     id: 1,
     url: require("../../assets/images/profile2.jpg"),
@@ -59,30 +60,82 @@ const statusData = [
   },
 ];
 
+const miniStoryData = [
+  {
+    id: 1,
+    url: require("../../assets/images/profile2.jpg"),
+  },
+  {
+    id: 2,
+    url: require("../../assets/images/profile1.jpg"),
+  },
+  {
+    id: 3,
+    url: require("../../assets/images/profile3.jpg"),
+  },
+  {
+    id: 4,
+    url: require("../../assets/images/profile1.jpg"),
+  },
+  {
+    id: 5,
+    url: require("../../assets/images/profile3.jpg"),
+  },
+  {
+    id: 6,
+    url: require("../../assets/images/profile2.jpg"),
+  },
+  {
+    id: 7,
+    url: require("../../assets/images/profile1.jpg"),
+  },
+];
+
 const UserStoryCard = (props) => {
   const renderItem = ({ item }) => (
     <Item imageUrl={item.url} userName={item.name} />
   );
 
   return (
-    <View style={styles.containerStyle}>
-      {props.cardTitle != null ? (
-        <Text style={styles.cardTitleStyle}>{props.cardTitle}</Text>
-      ) : null}
-      <FlatList
-        style={styles.itemListStyle}
-        contentContainerStyle={{
-          alignItems: "center",
-        }}
-        horizontal
-        pagingEnabled={true}
-        showsHorizontalScrollIndicator={false}
-        data={statusData}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-        ItemSeparatorComponent={() => <View style={{ width: 20 }} />}
-      />
-    </View>
+    <SafeAreaView>
+      {/* simple userStoryCard without card title and username */}
+      <Text style={styles.label}>1. Simple UserStoryCard</Text>
+      <View style={styles.containerStyle}>
+        <FlatList
+          style={styles.itemListStyle}
+          contentContainerStyle={{
+            alignItems: "center",
+          }}
+          horizontal
+          pagingEnabled={true}
+          showsHorizontalScrollIndicator={false}
+          data={miniStoryData}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+          ItemSeparatorComponent={() => <View style={{ width: 20 }} />}
+        />
+      </View>
+      {/* Complete user story card with card title and username */}
+      <Text style={styles.label}>1. Simple UserStoryCard</Text>
+      <View style={styles.containerStyle}>
+        {props.cardTitle != null ? (
+          <Text style={styles.cardTitleStyle}>{props.cardTitle}</Text>
+        ) : null}
+        <FlatList
+          style={styles.itemListStyle}
+          contentContainerStyle={{
+            alignItems: "center",
+          }}
+          horizontal
+          pagingEnabled={true}
+          showsHorizontalScrollIndicator={false}
+          data={storyData}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+          ItemSeparatorComponent={() => <View style={{ width: 20 }} />}
+        />
+      </View>
+    </SafeAreaView>
   );
 };
 
@@ -93,12 +146,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     paddingVertical: 15,
     borderRadius: 10,
+    marginBottom: 20,
     backgroundColor: "#fff",
     shadowColor: "#171717",
     shadowOffset: { width: -2, height: 4 },
     shadowOpacity: 0.2,
     shadowRadius: 3,
     elevation: 10,
+  },
+  label: {
+    color: "#333",
+    fontSize: 15,
+    marginVertical: 8,
   },
   cardTitleStyle: {
     fontSize: 14,
@@ -107,7 +166,6 @@ const styles = StyleSheet.create({
   },
   itemListStyle: {
     flexDirection: "row",
-    marginBottom: 10,
   },
   itemStyle: {
     alignItems: "center",
@@ -120,7 +178,6 @@ const styles = StyleSheet.create({
     borderRadius: (64 / 2) * 100,
     borderWidth: 4,
     borderColor: "#00ff0080",
-    marginBottom: 10,
   },
   itemImageStyle: {
     width: 60,
@@ -128,6 +185,8 @@ const styles = StyleSheet.create({
     borderRadius: (60 / 2) * 100,
   },
   itemUserNameStyle: {
+    marginBottom: 10,
+    marginTop: 10,
     color: "#333",
     fontWeight: "bold",
   },
