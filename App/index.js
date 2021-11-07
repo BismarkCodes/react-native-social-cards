@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import ChatList from "./components/Chatlist/ChatList";
+import UserStoryCard from "./components/UserStoryCard/UserStoryCard";
 
 export default function App() {
   return (
@@ -20,6 +21,11 @@ export default function App() {
         <Text style={styles.sectionTitle}>#ChatList</Text>
         <View style={styles.container}>
           <ChatList />
+        </View>
+
+        <Text style={styles.sectionTitle}>#UserStoryCard</Text>
+        <View style={styles.container}>
+          <UserStoryCard cardTitle="Stories" />
         </View>
       </ScrollView>
     </SafeAreaProvider>
