@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
+  ActivityIndicator,
   ScrollView,
   SectionList,
   StatusBar,
@@ -12,21 +13,33 @@ import ChatList from "./components/Chatlist/ChatList";
 import UserStoryCard from "./components/UserStoryCard/UserStoryCard";
 
 export default function App() {
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  }, []);
   return (
     <SafeAreaProvider>
       <StatusBar barStyle="dark-content" backgroundColor="#fff" />
       <Text style={styles.title}>React-Native-Social-Cards 🥇💟</Text>
       <Text style={styles.byMe}>by @bismarkamanor</Text>
       <ScrollView>
-        <Text style={styles.sectionTitle}>#ChatList</Text>
-        <View style={styles.container}>
-          <ChatList />
-        </View>
+        {isLoading === true ? (
+          <ActivityIndicator color="#ccc" size="large" />
+        ) : (
+          <>
+            <Text style={styles.sectionTitle}>#ChatList</Text>
+            <View style={styles.container}>
+              <ChatList />
+            </View>
 
-        <Text style={styles.sectionTitle}>#UserStoryCard</Text>
-        <View style={styles.container}>
-          <UserStoryCard cardTitle="Stories" />
-        </View>
+            <Text style={styles.sectionTitle}>#UserStoryCard</Text>
+            <View style={styles.container}>
+              <UserStoryCard cardTitle="Stories" />
+            </View>
+          </>
+        )}
       </ScrollView>
     </SafeAreaProvider>
   );

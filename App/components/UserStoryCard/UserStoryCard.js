@@ -116,7 +116,7 @@ const UserStoryCard = (props) => {
         />
       </View>
       {/* Complete user story card with card title and username */}
-      <Text style={styles.label}>1. Simple UserStoryCard</Text>
+      <Text style={styles.label}>2. Detailed UserStoryCard</Text>
       <View style={styles.containerStyle}>
         {props.cardTitle != null ? (
           <Text style={styles.cardTitleStyle}>{props.cardTitle}</Text>
