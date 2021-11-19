@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
 import {
   ActivityIndicator,
+  Dimensions,
   ScrollView,
   SectionList,
   StatusBar,
   StyleSheet,
   Text,
   View,
+  Image,
 } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import ChatList from "./components/Chatlist/ChatList";
-import UserStoryCard from "./components/UserStoryCard/UserStoryCard";
+import UserPostCard from "./components/UserPostCard/UserPostCard";
+import StoriesCard from "./components/StoriesCard/StoriesCard";
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -26,17 +29,64 @@ export default function App() {
       <Text style={styles.byMe}>by @bismarkamanor</Text>
       <ScrollView>
         {isLoading === true ? (
-          <ActivityIndicator color="#ccc" size="large" />
+          <ActivityIndicator
+            style={{ marginTop: Dimensions.get("window").height * 0.5 }}
+            color="#ccc"
+            size="large"
+          />
         ) : (
           <>
+            {/* chatlist card */}
             <Text style={styles.sectionTitle}>#ChatList</Text>
             <View style={styles.container}>
               <ChatList />
             </View>
-
-            <Text style={styles.sectionTitle}>#UserStoryCard</Text>
+            {/* user story card */}
+            <Text style={styles.sectionTitle}>#StoriesCard</Text>
             <View style={styles.container}>
-              <UserStoryCard cardTitle="Stories" />
+              <StoriesCard cardTitle="Stories" />
+            </View>
+            {/* User Post Card */}
+            <Text style={styles.sectionTitle}>#UserPostCard</Text>
+            <Text style={[styles.label, { marginTop: 15 }]}>
+              1. Simple UserPostCard
+            </Text>
+            <View style={[styles.container, { paddingTop: 0 }]}>
+              <UserPostCard
+                username="Apple Technologies"
+                postTime="Today @2:30 pm"
+                title="What's new about the M1 chip for this year"
+                description="M1 Pro has an up-to-16-core GPU that is up to 2x faster than M1 and up to 7x faster than the integrated graphics on the latest 8-core PC laptop chip. 1 Compared to a powerful discrete GPU for PC notebooks, M1 Pro delivers more performance while using up to 70 percent less power. "
+              />
+            </View>
+            <Text style={styles.label}>2. Complete UserPostCard</Text>
+            <View style={[styles.container, { paddingTop: 0 }]}>
+              <UserPostCard
+                active={true}
+                profileImage={
+                  <Image
+                    style={{
+                      flex: 1,
+                      height: "100%",
+                      width: "100%",
+                      borderRadius: 50,
+                    }}
+                    source={require("./assets/images/profile3.jpg")}
+                    resizeMode="cover"
+                  />
+                }
+                postImage={
+                  <Image
+                    style={{ flex: 1, height: "100%", width: "100%" }}
+                    source={require("./assets/images/profile1.jpg")}
+                    resizeMode="cover"
+                  />
+                }
+                username="Gia May"
+                postTime="Yesterday @4:30 am"
+                title="10 Reasons why you have to take care of your skin every night before you go to bed"
+                description="M1 Pro has an up-to-16-core GPU that is up to 2x faster than M1 and up to 7x faster than the integrated graphics on the latest 8-core PC laptop chip. 1 Compared to a powerful discrete GPU for PC notebooks, M1 Pro delivers more performance while using up to 70 percent less power. "
+              />
             </View>
           </>
         )}
@@ -74,5 +124,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     color: "#0000ff",
+  },
+  label: {
+    color: "#333",
+    fontSize: 15,
+    marginVertical: 8,
+    marginHorizontal: 20,
   },
 });

@@ -91,7 +91,7 @@ const miniStoryData = [
   },
 ];
 
-const UserStoryCard = (props) => {
+const StoriesCard = (props) => {
   const renderItem = ({ item }) => (
     <Item imageUrl={item.url} userName={item.name} />
   );
@@ -139,7 +139,7 @@ const UserStoryCard = (props) => {
   );
 };
 
-export default UserStoryCard;
+export default StoriesCard;
 
 const styles = StyleSheet.create({
   containerStyle: {
